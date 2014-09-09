@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require 'rack-flash'
 require './lib/link' # this needs to be done after datamapper is initialised
 require './lib/tag' # this needs to be done after datamapper is initialised
 require './lib/user'
@@ -7,7 +8,11 @@ require_relative 'helpers/application.rb'
 require_relative 'data_mapper_setup.rb'
 
 enable :sessions
+use Rack::Flash 
+
+
 set :sessions_secret, 'super secret'
+
 
 get '/' do
 	@links = Link.all
@@ -32,6 +37,7 @@ get '/tags/:text' do
 end
 
 get '/users/new' do
+	@user = User.new
 	# note the view is in views/users/new.erb
 	# we need the quotes because otherwise
 	# ruby would divide the symbol :users by the
@@ -40,10 +46,16 @@ get '/users/new' do
 end
 
 post '/users' do
-	user = User.create(email: params[:email],
-				password: params[:password])
-	session[:user_id] = user.id
-	redirect to('/')
+	@user = User.create(email: params[:email],
+				password: params[:password],
+				:password_confirmation => params[:password_confirmation])
+	if @user.save
+		session[:user_id] = @user.id
+		redirect to('/')
+	else
+		flash[:notice] = "Sorry, your passwords don't match"
+		erb :"users/new"
+	end
 end
 
 
