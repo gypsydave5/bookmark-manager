@@ -34,3 +34,23 @@ post '/sessions/recovery' do
 	user.save
 	flash[:notice] = "Please check your email for a link to reset your password"
 end
+
+get '/sessions/recovery/:password_token' do
+	user = User.first( password_token: params[:password_token] )
+	@user = user.email
+	session[:user_id] = user.id
+	erb :"sessions/recovery_reset"
+end
+
+post '/session/recovery_reset' do
+	@user = User.first( id: sesssion[:user_id] )
+	@user.password = params[:password]
+	@user.password_token = params[:password_token]
+	if @user.save
+		flash[:notify] = "Password reset successfully!"
+		redirect to('/')
+	else
+		flash.now[:errors] = @user.errors.full_messages
+		erb :"sessions/recovery_reset"
+	end
+end

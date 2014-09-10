@@ -87,7 +87,7 @@ feature 'User forgest password' do
 	end
 
 	scenario "and follows reset link" do
-		visit "users/recovery/ecrtfvygbhuj5678"
+		visit "sessions/recovery/ecrtfvygbhuj5678"
 		expect(page).to have_content("Hellow test@test.com!")
 		expect(page).to have_content("Please enter new password")
 		fill_in 'password', with: "1234"
