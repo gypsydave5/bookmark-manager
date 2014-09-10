@@ -66,4 +66,18 @@ feature 'User signs out' do
 		expect(page).not_to have_content("Welcome, test@test.com")
 	end
 
+feature 'User forgest password' do
+
+	scenario "and requests password reset" do
+		visit '/sessions/new'
+		click_button 'Forgot your password?'
+		expect(current_path).to eq('/sessions/recovery')
+		expect(page).to have_content("Please enter your email")
+		fill_in 'email', with: email
+		click_button "Recover password"
+		expect(page).to have_content("Please check your email for a link to reset your password")		
+	end
+end
+
+
 end
