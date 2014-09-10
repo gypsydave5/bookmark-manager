@@ -36,18 +36,17 @@ post '/sessions/recovery' do
 end
 
 get '/sessions/recovery/:password_token' do
-	user = User.first( password_token: params[:password_token] )
-	@user = user.email
-	session[:user_id] = user.id
+	@user = User.first( password_token: params[:password_token] )
+	session[:user_id] = @user.id
 	erb :"sessions/recovery_reset"
 end
 
-post '/session/recovery_reset' do
-	@user = User.first( id: sesssion[:user_id] )
+post '/sessions/recovery_reset' do
+	@user = User.first( id: session[:user_id] )
 	@user.password = params[:password]
-	@user.password_token = params[:password_token]
+	@user.password_confirmation = params[:password_confirmation]
 	if @user.save
-		flash[:notify] = "Password reset successfully!"
+		flash[:notice] = "Password reset successfully!"
 		redirect to('/')
 	else
 		flash.now[:errors] = @user.errors.full_messages

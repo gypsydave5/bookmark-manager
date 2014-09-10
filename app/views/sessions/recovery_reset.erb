@@ -1,6 +1,6 @@
-<p>Hellow <%= @user %>!</p>
+<p>Hellow <%= @user.email %>!</p>
 Please enter new password
-<form method="POST" path="/sessions/recovery_reset">
+<form method="POST" action="/sessions/recovery_reset">
 	Password: <input type="password" name="password">
 	Confirm new Password: <input type="password" name="password_confirmation">
 	<input type="submit" value="Enter">

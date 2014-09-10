@@ -93,6 +93,7 @@ feature 'User forgest password' do
 		fill_in 'password', with: "1234"
 		fill_in 'password_confirmation', with: "1234"
 		click_button 'Enter'
+		expect(page).not_to have_content("Sorry, your passwords don't match")
 		expect(current_path).to eq('/')
 		expect(page).to have_content("Password reset successfully!")
 		expect(page).to have_content("Welcome, test@test.com")
