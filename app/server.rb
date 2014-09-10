@@ -1,87 +1,26 @@
 require 'sinatra'
 require 'data_mapper'
 require 'rack-flash'
-require './lib/link' # this needs to be done after datamapper is initialised
-require './lib/tag' # this needs to be done after datamapper is initialised
-require './lib/user'
+require 'sinatra/partial'
+
+require_relative'models/link' # this needs to be done after datamapper is initialised
+require_relative'models/tag' # this needs to be done after datamapper is initialised
+require_relative'models/user'
+
 require_relative 'helpers/application.rb'
 require_relative 'data_mapper_setup.rb'
 
+require_relative 'controllers/users.rb'
+require_relative 'controllers/sessions.rb'
+require_relative 'controllers/links.rb'
+require_relative 'controllers/tags.rb'
+require_relative 'controllers/application.rb'
+
 enable :sessions
-use Rack::Flash
-use Rack::MethodOverride 
-
-
 set :sessions_secret, 'super secret'
-
-
-get '/' do
-	@links = Link.all
-	erb :index
-end
-
-post '/links' do
-	url = params["url"]
-	title = params["title"]
-	tags = params["tags"].split(" ").map do |tag|
-		#this will either find this tag or create it if it doesn't exist already
-		Tag.first_or_create(text: tag)
-	end
-	Link.create(:url => url, :title => title, :tags => tags)
-	redirect to('/')
-end
-
-get '/tags/:text' do
-	tag = Tag.first(:text => params[:text])
-	@links = tag ? tag.links : []
-	erb :index
-end
-
-get '/users/new' do
-	@user = User.new
-	# note the view is in views/users/new.erb
-	# we need the quotes because otherwise
-	# ruby would divide the symbol :users by the
-	# variable new (which makes no sense)
-	erb :"users/new"
-end
-
-post '/users' do
-	@user = User.create(email: params[:email],
-				password: params[:password],
-				:password_confirmation => params[:password_confirmation])
-	if @user.save
-		session[:user_id] = @user.id
-		redirect to('/')
-	else
-		flash.now[:errors] = @user.errors.full_messages
-		erb :"users/new"
-	end
-end
-
-get '/sessions/new' do
-	erb :"sessions/new"
-end
-
-post '/sessions' do
-	email, password = params[:email], params[:password]
-	user = User.authenticate(email, password)
-	if user
-		session[:user_id] = user.id
-		redirect to('/')
-	else
-		flash[:errors] = ["The email or password is incorrect"]
-		erb :"sessions/new"
-	end
-end
-
-delete '/sessions' do
-	session.delete(:user_id)
-	flash[:notice] = "Good bye!"
-	redirect to('/sessions/new')
-end
-
-
+set :partial_template_engine, :erb
+use Rack::Flash
+use Rack::MethodOverride
 
 
 
