@@ -8,7 +8,8 @@ require_relative 'helpers/application.rb'
 require_relative 'data_mapper_setup.rb'
 
 enable :sessions
-use Rack::Flash 
+use Rack::Flash
+use Rack::MethodOverride 
 
 
 set :sessions_secret, 'super secret'
@@ -73,6 +74,13 @@ post '/sessions' do
 		erb :"sessions/new"
 	end
 end
+
+delete '/sessions' do
+	session.delete(:user_id)
+	flash[:notice] = "Good bye!"
+	redirect to('/sessions/new')
+end
+
 
 
 
