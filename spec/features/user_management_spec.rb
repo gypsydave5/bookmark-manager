@@ -65,8 +65,16 @@ feature 'User signs out' do
 		expect(page).to have_content("Good bye!")
 		expect(page).not_to have_content("Welcome, test@test.com")
 	end
+end
 
 feature 'User forgest password' do
+
+	background(:each) do
+		User.create( email: "test@test.com",
+					password: "test",
+					password_confirmation: "test",
+					password_token: "ecrtfvygbhuj5678"	)
+	end
 
 	scenario "and requests password reset" do
 		visit '/sessions/new'
@@ -78,7 +86,15 @@ feature 'User forgest password' do
 		expect(page).to have_content("Please check your email for a link to reset your password")
 	end
 
-end
-
-
+	scenario "and follows reset link" do
+		visit "users/recovery/ecrtfvygbhuj5678"
+		expect(page).to have_content("Hellow test@test.com!")
+		expect(page).to have_content("Please enter new password")
+		fill_in 'password', with: "1234"
+		fill_in 'password_confirmation', with: "1234"
+		click_button 'Enter'
+		expect(current_path).to eq('/')
+		expect(page).to have_content("Password reset successfully!")
+		expect(page).to have_content("Welcome, test@test.com")
+	end
 end
