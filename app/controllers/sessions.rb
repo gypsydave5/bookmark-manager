@@ -1,3 +1,5 @@
+TOKEN_ELEMENTS = (1..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a
+
 get '/sessions/new' do
 	erb :"sessions/new"
 end
@@ -20,3 +22,15 @@ delete '/sessions' do
 	redirect to('/sessions/new')
 end
 
+
+get '/sessions/recovery' do
+	erb :"sessions/recovery"
+end
+
+post '/sessions/recovery' do
+	user = User.first( email: params[:email] )
+	user.password_token = (1..64).map{ TOKEN_ELEMENTS.sample }.join
+	user.password_token_timestamp = Time.now
+	user.save
+	flash[:notice] = "Please check your email for a link to reset your password"
+end
