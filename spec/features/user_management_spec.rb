@@ -40,7 +40,7 @@ feature "User sign in" do
 
 	background(:each) do
 		User.create( email: "test@test.com",
-							   password: "test"
+							   password: "test",
 							   password_confirmation: "test"	)
 	end
 
