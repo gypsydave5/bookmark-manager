@@ -36,20 +36,31 @@ post '/sessions/recovery' do
 end
 
 get '/sessions/recovery/:password_token' do
-	@user = User.first( password_token: params[:password_token] )
-	session[:user_id] = @user.id
+	@password_token = params[:password_token]
 	erb :"sessions/recovery_reset"
 end
 
 post '/sessions/recovery_reset' do
-	@user = User.first( id: session[:user_id] )
-	@user.password = params[:password]
-	@user.password_confirmation = params[:password_confirmation]
-	if @user.save
+	user = User.first( password_token:params[:password_token] )
+
+	unless user.email == params[:email]
+		flash.now[:notice] = "Incorrect email. Please contact customer services or request a new new password email"
+		user.password_token = nil
+		user.save
+		redirect to ('/')
+	end
+
+	user.password = params[:password]
+	user.password_confirmation = params[:password_confirmation]
+
+	if user.save
 		flash[:notice] = "Password reset successfully!"
+		session[:user_id] = user.id
+		user.password_token = nil
+		user.save
 		redirect to('/')
 	else
-		flash.now[:errors] = @user.errors.full_messages
+		flash.now[:errors] = user.errors.full_messages
 		erb :"sessions/recovery_reset"
 	end
 end

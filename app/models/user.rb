@@ -31,4 +31,8 @@ class User
 		end
 	end
 
+	def token_authenticate(token)
+		password_token == token
+	end
+
 end
