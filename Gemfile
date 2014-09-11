@@ -6,6 +6,8 @@ gem 'dm-postgres-adapter'
 gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-partial'
+gem 'mailgun'
+gem 'rest-client'
 
 group :development, :test do
 	gem 'rspec'
