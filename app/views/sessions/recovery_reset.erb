@@ -1,0 +1,8 @@
+Please enter new password
+<form method="POST" action="/sessions/recovery_reset">
+	Please confirm your email address: <input type="text" name="email">
+	New Password: <input type="password" name="password">
+	Confirm new Password: <input type="password" name="password_confirmation">
+	<input type="hidden" name="password_token" value="<%= @password_token %>">
+	<input type="submit" value="Enter">
+</form>
