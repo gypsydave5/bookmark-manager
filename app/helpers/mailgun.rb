@@ -1,5 +1,5 @@
 API_KEY = ENV['MAILGUN_API_KEY']
-SMTP_LOGIN = ENV[MAILGUN_SMTP_LOGIN].split('@')[1]
+SMTP_LOGIN = ENV['MAILGUN_SMTP_LOGIN'].split('@')[1]
 API_URL = "https://api:#{API_KEY}@#{SMTP_LOGIN}/messages"
 APP_URL = ENV["URL"]
 
