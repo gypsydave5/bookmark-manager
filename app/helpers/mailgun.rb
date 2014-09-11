@@ -1,6 +1,6 @@
 API_KEY = ENV['MAILGUN_API_KEY']
-SMTP_LOGIN = ENV['MAILGUN_SMTP_LOGIN'].split('@')[1]
-API_URL = "https://api:#{API_KEY}@#{SMTP_LOGIN}/messages"
+LOGIN = ENV['MAILGUN_SMTP_LOGIN'].split('@')[1]
+API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/#{LOGIN}/messages"
 APP_URL = ENV["URL"]
 
 def send_email(email,token)
