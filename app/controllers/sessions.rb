@@ -29,20 +29,24 @@ end
 
 post '/sessions/recovery' do
 	user = User.first( email: params[:email] )
-	user.password_token = (1..64).map{ TOKEN_ELEMENTS.sample }.join
+	user.password_token = (1..9).map{ ('A'..'F').to_a.sample }.join
+	puts user.password_token.inspect
 	user.password_token_timestamp = Time.now
 	user.save
+	send_email(user.email,user.password_token)
 	flash[:notice] = "Please check your email for a link to reset your password"
 end
 
 get '/sessions/recovery/:password_token' do
-	@password_token = params[:password_token]
+	
 	erb :"sessions/recovery_reset"
 end
 
 post '/sessions/recovery_reset' do
-	user = User.first( password_token:params[:password_token] )
-
+	puts User.first.inspect
+	puts params[:password_token]
+	user = User.first( password_token: params[:password_token] )
+	puts user.inspect
 	unless user.email == params[:email]
 		flash.now[:notice] = "Incorrect email. Please contact customer services or request a new new password email"
 		user.password_token = nil
