@@ -1,8 +1,13 @@
+body{
+	font-family: "Comic Sans MS";
+}
+
+
 header {
 	background-color: black;
 	color: white;
 	padding:10px;
-	font-size:50px;
+	font-size:30px;
 	margin-bottom: 5px;
 	display: flex;
 }
@@ -25,7 +30,7 @@ span {
 	text-align: right;
 }
 
-a {
+#user_buttons a {
 	display: inline-block;
 	width: 80px;
 	color: white;
@@ -41,4 +46,12 @@ a {
 
 #user_links {
 	float: right;
+}
+
+a {
+	color: black;
+	width: 0;
+	background: none;
+	border: 1px black;
+	font-size: 20px;
 }
