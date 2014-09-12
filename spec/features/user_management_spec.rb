@@ -70,7 +70,7 @@ end
 feature 'User forgest password' do
 
 	background(:each) do
-		User.create( email: "test@test.com",
+		User.create( email: "dave.wickes@gmail.com",
 					password: "test",
 					password_confirmation: "test",
 					password_token: "ecrtfvygbhuj5678"	)
@@ -81,7 +81,8 @@ feature 'User forgest password' do
 		click_link 'Forgot your password?'
 		expect(current_path).to eq('/sessions/recovery')
 		expect(page).to have_content("Please enter your email")
-		fill_in 'email', with: "test@test.com"
+		fill_in 'email', with: "dave.wickes@gmail.com"
+		allow_any_instance_of(Sinatra::Application).to receive(:send_email).and_return true
 		click_button "Recover password"
 		expect(page).to have_content("Please check your email for a link to reset your password")
 	end
@@ -91,12 +92,12 @@ feature 'User forgest password' do
 		expect(page).to have_content("Please enter new password")
 		fill_in 'password', with: "1234"
 		fill_in 'password_confirmation', with: "1234"
-		fill_in 'email', with: 'test@test.com'
+		fill_in 'email', with: 'dave.wickes@gmail.com'
 		click_button 'Enter'
 		expect(page).not_to have_content("Sorry, your passwords don't match")
 		expect(current_path).to eq('/')
 		expect(page).to have_content("Password reset successfully!")
-		expect(page).to have_content("Welcome, test@test.com")
+		expect(page).to have_content("Welcome, dave.wickes@gmail.com")
 	end
 
 end
