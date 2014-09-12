@@ -6,6 +6,8 @@
 	</form>
 <% elsif request.path == "/sessions/new" %>
 	<div><a href="/users/new"> Sign-up </a></div>
+<% elsif request.path == "/users/new" %>
+	<div><a href="/sessions/new"> Login </a></div>
 <% else %>
 	<div><a href="/sessions/new"> Login </a></div>
 	<div><a href="/users/new"> Sign-up </a></div>

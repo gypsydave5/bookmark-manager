@@ -39,8 +39,8 @@ feature "User sign in" do
 
 	background(:each) do
 		User.create( email: "test@test.com",
-							   password: "test",
-							   password_confirmation: "test"	)
+					password: "test",
+					password_confirmation: "test"	)
 	end
 
 	scenario 'with correct credentials' do
@@ -55,6 +55,13 @@ feature "User sign in" do
 		expect(page).not_to have_content("Welcome, test@test.com")
 		sign_in('test@test.com', 'wrong')
 		expect(page).not_to have_content("Welcome, test@test.com")
+	end
+
+	scenario "can't load bookmarks until signed in" do
+		visit '/'
+		expect(page).not_to have_content("Url:")
+		sign_in('test@test.com', 'test')
+		expect(page).to have_content("Url:")
 	end
 end
 
