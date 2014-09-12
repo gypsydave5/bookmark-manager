@@ -26,6 +26,12 @@ feature "User signs up" do
 		expect{ sign_up }.to change(User, :count).by(0)
 		expect(page).to have_content("This email is already taken")
 	end
+
+	scenario "cannot sign up when signing up" do
+		visit '/'
+		click_on 'Sign-up'
+		expect(page).not_to have_content('Sign-up')
+	end
 end
 
 
@@ -84,7 +90,7 @@ feature 'User forgets password' do
 					password_token: "ecrtfvygbhuj5678",
 					password_token_timestamp: t
 					)
-		
+
 
 	end
 

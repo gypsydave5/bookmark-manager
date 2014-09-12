@@ -4,6 +4,8 @@
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Sign out">
 	</form>
+<% elsif request.path == "/sessions/new" %>
+	<div><a href="/users/new"> Sign-up </a></div>
 <% else %>
 	<div><a href="/sessions/new"> Login </a></div>
 	<div><a href="/users/new"> Sign-up </a></div>
