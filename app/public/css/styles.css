@@ -2,10 +2,43 @@ header {
 	background-color: black;
 	color: white;
 	padding:10px;
-	font-size:30px;
+	font-size:50px;
 	margin-bottom: 5px;
+	display: flex;
+}
+
+nav {
+	flex: 2;
+}
+
+header > * {
+	margin: auto 0;
 }
 
 span {
 	font-size:20px;
+}
+
+#user_buttons {
+	flex: 1;
+	-webkit-flex: 1;
+	text-align: right;
+}
+
+a {
+	display: inline-block;
+	width: 80px;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	background: teal;
+	border: 1px red dotted;
+	border-radius: 5px;
+	padding: 5px 25px;
+	margin: 5px;
+
+}
+
+#user_links {
+	float: right;
 }

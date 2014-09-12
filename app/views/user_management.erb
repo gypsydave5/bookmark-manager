@@ -1,0 +1,13 @@
+<% if current_user %>
+	<form id="sign-out" method="post" action="/sessions">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="Sign out">
+	</form>
+<% elsif request.path == "/sessions/new" %>
+	<span><a href="/users/new">Sign-up</a></span>
+<% elsif request.path == "/users/new" %>
+	<span><a href="/sessions/new">Login</a></span>
+<% else %>
+	<span><a href="/sessions/new">Login</a></span>
+	<span><a href="/users/new">Sign-up</a></span>
+<% end %>

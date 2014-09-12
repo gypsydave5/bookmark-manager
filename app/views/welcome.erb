@@ -1,21 +1,7 @@
-<div id="user-links">
-	<% if current_user %>
-		<span id="welcome-message">
-			Welcome, <%= current_user.email %>
-		</span>
-		<form id="sign-out" method="post" action="/sessions">
-			<input type="hidden" name="_method" value="delete">
-			<input type="submit" value="Sign out">
-		</form>
-
-
-	<% elsif request.path == "/sessions/new" %>
-		<div><a href="/users/new"> Sign-up </a></div>
-	<% elsif request.path == "/users/new" %>
-		<div><a href="/sessions/new"> Login </a></div>
-	<% else %>
-		<div><a href="/sessions/new"> Login </a></div>
-		<div><a href="/users/new"> Sign-up </a></div>
-	<% end %>
-	
-</div>
+<% if current_user %>
+	<div id="user-links">
+			<span id="welcome-message">
+				Welcome, <%= current_user.email %>
+			</span>
+	</div>
+<% end %>

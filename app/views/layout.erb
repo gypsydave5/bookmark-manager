@@ -6,8 +6,12 @@
 </head>
 <body>
 	<header>
-		<nav id="logo"> Bookmark Manager </nav>
-		<%= partial :welcome %>
+		<nav id="logo"> Bookmark Manager
+			<%= partial :welcome %>
+		</nav>
+		<div id="user_buttons">
+			<%= partial :user_management %>
+		</div>
 	</header>
 
 	<%= partial :flash %>
