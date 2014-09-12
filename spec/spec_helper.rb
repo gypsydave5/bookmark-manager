@@ -10,6 +10,7 @@ require './app/server'
 DataMapper.auto_migrate!
 require 'database_cleaner'
 require 'capybara/rspec'
+require 'timecop'
 
 Capybara.app = Sinatra::Application
 

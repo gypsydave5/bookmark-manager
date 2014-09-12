@@ -67,13 +67,19 @@ feature 'User signs out' do
 	end
 end
 
-feature 'User forgest password' do
+feature 'User forgets password' do
 
 	background(:each) do
+		t = Time.local(2014,9,12,12,0,0)
+		Timecop.freeze(t)
 		User.create( email: "dave.wickes@gmail.com",
 					password: "test",
 					password_confirmation: "test",
-					password_token: "ecrtfvygbhuj5678"	)
+					password_token: "ecrtfvygbhuj5678",
+					password_token_timestamp: t
+					)
+		
+
 	end
 
 	scenario "and requests password reset" do
@@ -100,4 +106,14 @@ feature 'User forgest password' do
 		expect(page).to have_content("Welcome, dave.wickes@gmail.com")
 	end
 
+	scenario "and is not allowed to reset their password if the timestamp is older than 1 hour" do
+		Timecop.travel(Time.now+60*60)
+		visit "sessions/recovery/ecrtfvygbhuj5678"
+		expect(page).to have_content("Sorry dude, your reset token has expired. Please submit a new request")
+		expect(current_path).to eq('/sessions/recovery')
+	end
+
+	after do
+		Timecop.return
+	end
 end
