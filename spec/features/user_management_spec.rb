@@ -65,6 +65,12 @@ feature 'User signs out' do
 		expect(page).to have_content("Good bye!")
 		expect(page).not_to have_content("Welcome, test@test.com")
 	end
+
+	scenario 'User cannot sign in when signed in' do
+		sign_in('test@test.com','test')
+		click_button "Sign out"
+		expect(page).not_to have_content('Login')
+	end
 end
 
 feature 'User forgets password' do

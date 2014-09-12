@@ -4,4 +4,7 @@
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Sign out">
 	</form>
+<% else %>
+	<div><a href="/sessions/new"> Login </a></div>
+	<div><a href="/users/new"> Sign-up </a></div>
 <% end %>
