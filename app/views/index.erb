@@ -1,17 +1,19 @@
 <h1> Welcome to the Bookmark Manager </h1>
 
-<ul>
-	<% @links.each do |link| %>
-		<li><a href="<%= link.url %>"><%= link.title %></a></li>
-	<% end %>
-</ul>
+<% unless session[:user_id] == nil  %>
+	<ul>
+		<% @links.each do |link| %>
+			<li><a href="<%= link.url %>"><%= link.title %></a></li>
+		<% end %>
+	</ul>
 
-<div id="new-link">
-	<form action="/links" method="post">
-		Url: <input type="text" name="url">
-		Title: <input type="text" name="title">
-		Tags: <input type="text" name="tags">
-		<input type="submit" value="Add link">
-	</form>
-</div>
+	<div id="new-link">
+		<form action="/links" method="post">
+			Url: <input type="text" name="url">
+			Title: <input type="text" name="title">
+			Tags: <input type="text" name="tags">
+			<input type="submit" value="Add link">
+		</form>
+	</div>
+<% end %>
 

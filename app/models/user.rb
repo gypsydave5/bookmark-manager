@@ -12,6 +12,7 @@ class User
 	property :password_digest, Text
 	property :password_token, String
 	property :password_token_timestamp, Time
+	has n, :links, :through => Resource
 
 	def password=(password)
 		@password = password

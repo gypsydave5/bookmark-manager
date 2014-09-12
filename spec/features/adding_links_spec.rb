@@ -1,6 +1,13 @@
 require 'spec_helper'
+require_relative 'helpers/session'
+
+include SessionHelpers
 
 feature "User adds a new link" do
+
+	before(:each) {
+		sign_up('test@test.com', 'test', 'test')
+	}
 
 	scenario "when browsing the homepage" do
 		expect(Link.count).to eq(0)
