@@ -7,7 +7,7 @@ feature "User browses the list of links" do
 
 	before(:each) {
 		sign_up('test@test.com', 'test', 'test')
-		click_on 'Sign out'
+		click_button 'Sign out'
 		sign_up('rupert@test.com', 'rupert', 'rupert')
 		Link.create(:url => "http://www.makersacademy.com",
 					:title => "Makers Academy",
@@ -30,9 +30,10 @@ feature "User browses the list of links" do
 	scenario "when opening the home page" do
 		visit '/'
 		expect(page).not_to have_content("Makers Academy")
-		expect(page).not_to have_content("Code.org")
-		expect(page).to have_content("Google")
+		expect(page).to have_content("Code.org")
+		expect(page).not_to have_content("Google")
 		expect(page).to have_content("Bing")
+		save_and_open_page
 	end
 
 	scenario "filtered by a tag" do
