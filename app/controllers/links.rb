@@ -9,3 +9,6 @@ post '/links' do
 	redirect to('/')
 end
 
+get '/links/new' do
+	erb :"links/new"
+end

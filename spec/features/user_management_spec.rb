@@ -61,7 +61,7 @@ feature "User sign in" do
 		visit '/'
 		expect(page).not_to have_content("Url:")
 		sign_in('test@test.com', 'test')
-		expect(page).to have_content("Url:")
+		expect(page).to have_content("Your bookmarks...")
 	end
 end
 

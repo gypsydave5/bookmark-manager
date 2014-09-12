@@ -33,7 +33,6 @@ feature "User browses the list of links" do
 		expect(page).to have_content("Code.org")
 		expect(page).not_to have_content("Google")
 		expect(page).to have_content("Bing")
-		save_and_open_page
 	end
 
 	scenario "filtered by a tag" do
