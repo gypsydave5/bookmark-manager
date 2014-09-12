@@ -37,7 +37,10 @@ post '/sessions/recovery' do
 end
 
 get '/sessions/recovery/:password_token' do
-
+	if (Time.now - User.first( password_token: params[:password_token] ).password_token_timestamp) >= 60 * 60
+		flash[:notice] = "Sorry dude, your reset token has expired. Please submit a new request."
+		 redirect to ('/sessions/recovery')
+	end
 	erb :"sessions/recovery_reset"
 end
 
