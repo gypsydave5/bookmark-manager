@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href='/css/css_reset.css'>
+	<link rel="stylesheet" type="text/css" href='/css/styles.css'>
+</head>
 <body>
+	<header>
+		<nav id="logo"> Bookmark Manager </nav>
+		<%= partial :welcome %>
+	</header>
+
 	<%= partial :flash %>
-	<%= partial :welcome %>
+
 	<%= yield %>
 </body>
+</html>

@@ -1,0 +1,11 @@
+header {
+	background-color: black;
+	color: white;
+	padding:10px;
+	font-size:30px;
+	margin-bottom: 5px;
+}
+
+span {
+	font-size:20px;
+}
