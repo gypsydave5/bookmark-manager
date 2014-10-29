@@ -1,5 +1,6 @@
 body{
 	font-family: "Comic Sans MS";
+	background-image: url(/images/pixel_weave_@2X.png);
 }
 
 
@@ -30,18 +31,34 @@ span {
 	text-align: right;
 }
 
-#user_buttons a {
+nav > a {
+	color: white;
+	text-decoration: none;
+}
+
+a.button:active {
+	position: relative;
+	top: 1px;
+	box-shadow: 0px -3px HSLA(170, 0%, 0%, 0.4) inset;
+}
+
+a.button {
 	display: inline-block;
-	width: 80px;
+	width: 90px;
 	color: white;
 	text-decoration: none;
 	text-align: center;
-	background: teal;
-	border: 1px red dotted;
+	background-color: teal;
+	border: 0px grey solid;
 	border-radius: 5px;
-	padding: 5px 25px;
+	padding: 8px 25px;
 	margin: 5px;
+	box-shadow: 0px -4px HSLA(170, 0%, 0%, 0.2) inset;
 
+}
+
+a.button.highlight {
+	background-color: goldenrod;
 }
 
 #user_links {
