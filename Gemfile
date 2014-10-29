@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.4'
 
 gem 'sinatra'
 gem 'data_mapper'
@@ -12,6 +12,7 @@ gem 'mailgun'
 gem 'rest-client'
 
 group :development, :test do
+	gem 'dotenv'
 	gem 'rspec'
 	gem 'capybara'
 	gem 'cucumber-sinatra'

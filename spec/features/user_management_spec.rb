@@ -56,13 +56,6 @@ feature "User sign in" do
 		sign_in('test@test.com', 'wrong')
 		expect(page).not_to have_content("Welcome, test@test.com")
 	end
-
-	scenario "can't load bookmarks until signed in" do
-		visit '/'
-		expect(page).not_to have_content("Url:")
-		sign_in('test@test.com', 'test')
-		expect(page).to have_content("Url:")
-	end
 end
 
 feature 'User signs out' do

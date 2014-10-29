@@ -63,6 +63,7 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.14)
       data_objects (= 0.10.14)
+    dotenv (1.0.2)
     extlib (0.9.16)
     fastercsv (1.5.5)
     highline (1.6.21)
@@ -129,6 +130,7 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
+  dotenv
   launchy
   mailgun
   rack-flash3

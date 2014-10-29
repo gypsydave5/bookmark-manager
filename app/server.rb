@@ -4,6 +4,8 @@ require 'rack-flash'
 require 'sinatra/partial'
 require 'mailgun'
 require 'rest-client'
+require 'dotenv'
+Dotenv.load
 
 
 require_relative'models/link' # this needs to be done after datamapper is initialised
