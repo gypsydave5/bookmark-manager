@@ -10,9 +10,10 @@ gem 'rack-flash3'
 gem 'sinatra-partial'
 gem 'mailgun'
 gem 'rest-client'
+gem 'dotenv'
 
 group :development, :test do
-	gem 'dotenv'
+
 	gem 'rspec'
 	gem 'capybara'
 	gem 'cucumber-sinatra'
