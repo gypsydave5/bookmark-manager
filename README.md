@@ -6,7 +6,7 @@
 
 ####Overview
 
-This week's tasks was to create a bookmark manager - a site to load and display favourited links. This was our first experience with integration testing using Capybara. We were also introduced to relational databases as users need to be able to save information on their accounts and retrieving during later sessions. We also had to take security into consideration and implement token authentication and mechanisms for forgotten passwords.
+This week's task was to create a bookmark manager - a site to load and display favourited links. This was our first experience with integration testing using Capybara. We were also introduced to relational databases as users need to be able to save information on their accounts and retrieving during later sessions. We also had to take security into consideration and implement token authentication and mechanisms for forgotten passwords.
 
 ####User experience
 
