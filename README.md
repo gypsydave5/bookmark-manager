@@ -6,11 +6,18 @@
 
 ####Overview
 
-This week's task was to create a bookmark manager - a site to load and display favourited links. This was our first experience with integration testing using Capybara. We were also introduced to relational databases as users need to be able to save information on their accounts and retrieving during later sessions. We also had to take security into consideration and implement token authentication and mechanisms for forgotten passwords.
+This week's task was to create a bookmark manager - a site to load and display
+favourited links. This was our first experience with integration testing using
+Capybara. We were also introduced to relational databases as users need to be
+able to save information on their accounts and retrieving during later sessions.
+We also had to take security into consideration and implement token
+authentication and mechanisms for forgotten passwords.
 
 ####User experience
 
-A user can sign up, sign in and post links which they can associate with tags. Returning users can get email reminders if they forget their password and see previously saved links.
+A user can sign up, sign in and post links which they can associate with tags.
+Returning users can get email reminders if they forget their password and see
+previously saved links.
 
 Check out the app here: [Bookmark Manager](http://bookmark-mgr.herokuapp.com/)
 
@@ -19,15 +26,15 @@ Check out the app here: [Bookmark Manager](http://bookmark-mgr.herokuapp.com/)
 + Production
   + Ruby
   + Sinatra
-  + Postgresql
+  + PostgreSQL
   + Data Mapper
   + bcrypt
   + rack flash
   + Mailgun
   + dotenv
-  
+
 + Testing
-  + Rspec
+  + RSpec
   + Capybara
   + Timecop
   + Database cleaner
@@ -36,7 +43,7 @@ Check out the app here: [Bookmark Manager](http://bookmark-mgr.herokuapp.com/)
 
 If you would like to see the tests run, first clone the repo:
 ```shell
-$ git clone https://github.com/Jrmcneil/bookmark-manager.git
+$ git clone git@github.com:gypsydave5/bookmark-manager-1.git
 ```
 
 Change into the directory
@@ -48,6 +55,9 @@ Run bundle to load the required gems
 ```shell
 $ bundle install
 ```
+
+Ensure that you have PostgreSQL intalled locally - please see the relevant
+documentation to install it with your OS.
 
 You will need to create a database locally:
 ```shell
