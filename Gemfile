@@ -2,23 +2,23 @@ source 'http://rubygems.org'
 
 ruby '2.1.4'
 
-gem 'sinatra'
+gem 'bcrypt'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
-gem 'bcrypt'
-gem 'rack-flash3'
-gem 'sinatra-partial'
-gem 'mailgun'
-gem 'rest-client'
 gem 'dotenv'
+gem 'mailgun'
+gem 'rack-flash3'
+gem 'rest-client'
+gem 'sinatra-partial'
+gem 'sinatra'
 
 group :development, :test do
 
-	gem 'rspec'
 	gem 'capybara'
 	gem 'cucumber-sinatra'
 	gem 'database_cleaner'
 	gem 'launchy'
-	gem 'timecop'
+	gem 'rspec'
 	gem 'shotgun'
+	gem 'timecop'
 end
