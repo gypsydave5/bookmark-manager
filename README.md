@@ -24,26 +24,29 @@ Check out the app here: [Bookmark Manager](http://bookmark-mgr.herokuapp.com/)
 ####Technologies used
 
 + Production
+  + bcrypt
+  + CSS
+  + Data Mapper
+  + dotenv
+  + ERB
+  + HTML
+  + Mailgun
+  + PostgreSQL
+  + rack flash
   + Ruby
   + Sinatra
-  + PostgreSQL
-  + Data Mapper
-  + bcrypt
-  + rack flash
-  + Mailgun
-  + dotenv
 
 + Testing
-  + RSpec
   + Capybara
-  + Timecop
   + Database cleaner
+  + RSpec
+  + Timecop
 
 ####Testing
 
 If you would like to see the tests run, first clone the repo:
 ```shell
-$ git clone git@github.com:gypsydave5/bookmark-manager-1.git
+$ git clone git@github.com:gypsydave5/bookmark-manager.git
 ```
 
 Change into the directory
@@ -74,3 +77,31 @@ Run Rspec:
 ```shell
 $ rspec
 ```
+
+#### Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+[Haml]: http://haml.info/
+[Yo]: http://www.justyo.co/
+[Bookmark Manager]: https://github.com/gypsydave5/bookmark-manager
+[Cucumber]: http://cukes.info/
+[Timecop]: https://github.com/travisjeffery/timecop
+[bcrypt]: https://github.com/codahale/bcrypt-ruby
+[CSS]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[Data Mapper]: http://datamapper.org/
+[dotenv]: https://github.com/bkeepers/dotenv
+[ERB]: http://www.stuartellis.eu/articles/erb/#other-resources
+[HTML]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[Mailgun]: https://github.com/bkeepers/dotenv
+[PostgreSQL]: http://www.postgresql.org/
+[rack flash]: https://github.com/nakajima/rack-flash
+[Ruby]: https://www.ruby-lang.org/en/
+[Sinatra]: http://www.sinatrarb.com/
+[Capybara]: http://jnicklas.github.io/capybara/
+[Database cleaner]: https://github.com/DatabaseCleaner/database_cleaner
+[RSpec]: http://rspec.info/
