@@ -24,23 +24,23 @@ Check out the app here: [Bookmark Manager](http://bookmark-mgr.herokuapp.com/)
 ####Technologies used
 
 + Production
-  + bcrypt
-  + CSS
-  + Data Mapper
-  + dotenv
-  + ERB
-  + HTML
-  + Mailgun
-  + PostgreSQL
-  + rack flash
-  + Ruby
-  + Sinatra
+  + [bcrypt]
+  + [CSS]
+  + [Data Mapper]
+  + [dotenv]
+  + [ERB]
+  + [HTML]
+  + [Mailgun]
+  + [PostgreSQL]
+  + [rack flash]
+  + [Ruby]
+  + [Sinatra]
 
 + Testing
-  + Capybara
-  + Database cleaner
-  + RSpec
-  + Timecop
+  + [Capybara]
+  + [Database cleaner]
+  + [RSpec]
+  + [Timecop]
 
 ####Testing
 
